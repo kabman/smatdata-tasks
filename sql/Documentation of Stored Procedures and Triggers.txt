@@ -1,0 +1,19 @@
+﻿This document explains the logic behind the stored procedures and triggers implemented in the PostgreSQL database. It aims to provide a simple overview of how they work and why they were created.
+
+
+UpdateStock- The stored procedure updates the stock quantity of a product in the " "'products' table after a sale is made.
+
+
+Inputs are productID and QuantitySold and it decreases the stock quantity of the specified product by the quantity sold and also checks if the updated stock quantity is negative and raises an error if it is.
+
+
+AddSale -  This stored procedure adds a new sale to the 'sales' table and updates the stock for the sold product.
+
+
+Inputs are CustomerID, ProductID, SaleDate, TotalPrice, QuantitySold and it adds a new record to the sales table and also calls the UpdateStock procedure to adjust the stock quantity.
+
+
+CheckStock- This trigger stops the addition of a sale if there isn't enough stock.
+
+
+NotifyLowStock- This trigger sends a notification when stock for any product falls below 5 units.
